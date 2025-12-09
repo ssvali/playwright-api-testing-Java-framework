@@ -26,43 +26,7 @@ jobs:
           java-version: '17'
 
       # -------------------------------------------------
-      # Clean Allure folders BEFORE build
-      # -------------------------------------------------
-      - name: Clean old Allure results
-        run: |
-          rm -rf allure-results
-          rm -rf allure-report
-
-      # -------------------------------------------------
       # Run Maven tests (change profile: smoke | regression | booking)
       # -------------------------------------------------
       - name: Run Maven tests
         run: mvn clean test -P smoke
-
-      # -------------------------------------------------
-      # Upload Allure Raw Results as Artifact
-      # -------------------------------------------------
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: allure-results
-
-      # -------------------------------------------------
-      # Generate Allure Report
-      # -------------------------------------------------
-      - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@v1.8.2
-        with:
-          allure_results: allure-results
-          allure_report: allure-report
-
-
-      # -------------------------------------------------
-      # Upload Allure Report (HTML)
-      # -------------------------------------------------
-      - name: Upload Allure HTML Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
