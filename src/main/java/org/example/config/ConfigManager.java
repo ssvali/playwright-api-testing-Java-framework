@@ -6,7 +6,7 @@ import java.util.Properties;
 public class ConfigManager {
 
     private static final Properties props = new Properties();
-    static String config = System.getProperty("config","dev");
+    static String config = System.getProperty("config","dev").toUpperCase();
     static {
         try {
             FileInputStream fis = new FileInputStream("src/test/resources/configs/"+config+".properties");
