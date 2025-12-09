@@ -52,10 +52,11 @@ jobs:
       # Generate Allure Report
       # -------------------------------------------------
       - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@v1.7
+        uses: simple-elf/allure-report-action@v1.8.2
         with:
           allure_results: allure-results
           allure_report: allure-report
+
 
       # -------------------------------------------------
       # Upload Allure Report (HTML)
